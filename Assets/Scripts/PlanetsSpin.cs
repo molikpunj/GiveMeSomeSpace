@@ -16,7 +16,7 @@ public class PlanetsSpin : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        transform.Rotate(0, 10 * Time.deltaTime, 10 * Time.deltaTime);
+        transform.Rotate(0, 30 * Time.deltaTime, 30 * Time.deltaTime);
         transform.position += Vector3.down * Time.deltaTime;
     }
 }

@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             float spawnPoint = Random.Range(-spawnRange, spawnRange);
-            Instantiate(planets[Random.Range(0, 5)], new Vector3(spawnPoint, spawnHeight, 3), Quaternion.identity);
+            Instantiate(planets[Random.Range(0, 5)], new Vector3(spawnPoint, spawnHeight, 0), Quaternion.identity);
             yield return new WaitForSeconds(Random.Range(15, 25));
         }
     }
