@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(spawnPlanet());
+        
     }
 
     // Update is called once per frame
@@ -23,11 +23,8 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator spawnPlanet()
     {
-        while (!gameOver)
-        {
-            float spawnPoint = Random.Range(-spawnRange, spawnRange);
-            Instantiate(planets[Random.Range(0, 5)], new Vector3(spawnPoint, spawnHeight, 0), Quaternion.identity);
-            yield return new WaitForSeconds(Random.Range(2, 6));
-        }
+        float spawnPoint = Random.Range(-spawnRange, spawnRange);
+        Instantiate(planets[Random.Range(0, 5)], new Vector3(spawnPoint, spawnHeight, 0), Quaternion.identity);
+        yield return new WaitForSeconds(Random.Range(2, 4));
     }
 }
