@@ -7,10 +7,12 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] private int moveForce;
     [SerializeField] private int rotateForce;
     [SerializeField] private GameObject energyRay;
+    public GameManager GameManager;
     private bool isFiringAllowed = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameManager = GameObject.FindAnyObjectByType<GameManager>();
         playerInput = new PlayerInput();
         playerInput.Enable();
     }
@@ -32,11 +34,20 @@ public class PlayerMovements : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Planet"))
+        {
+            GameManager.gameOver = true;
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+    }
+
     IEnumerator ShootingDelay()
     {
         isFiringAllowed = false;
         yield return new WaitForSeconds(0.2f);
         isFiringAllowed = true;
-
     }
 }
