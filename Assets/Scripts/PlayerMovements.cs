@@ -7,6 +7,7 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] private int moveForce;
     [SerializeField] private int rotateForce;
     [SerializeField] private GameObject energyRay;
+    [SerializeField] private ParticleSystem shootingLight;
     public GameManager GameManager;
     private bool isFiringAllowed = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,6 +32,8 @@ public class PlayerMovements : MonoBehaviour
         {
             Instantiate(energyRay, transform.position, Quaternion.identity);
             StartCoroutine(ShootingDelay());
+            shootingLight.Play();
+            StartCoroutine(Recoil());
         }
     }
 
@@ -49,5 +52,19 @@ public class PlayerMovements : MonoBehaviour
         isFiringAllowed = false;
         yield return new WaitForSeconds(0.2f);
         isFiringAllowed = true;
+    }
+
+    IEnumerator Recoil()
+    {
+        for(int i = 1; i <= 20; i++)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.005f, transform.position.z);
+            yield return new WaitForSeconds(0.005f);
+        }
+        for (int i = 1; i <= 20; i++)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.005f, transform.position.z);
+            yield return new WaitForSeconds(0.005f);
+        }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class UFOBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject ufoFire;
+    [SerializeField] private ParticleSystem bulletEffect;
     public GameManager GameManager;
     private float rotationDirection;
     private int health;
@@ -37,6 +38,8 @@ public class UFOBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("EnergyRay"))
         {
             health--;
+            Instantiate(bulletEffect, new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y + 0.7f, other.gameObject.transform.position.z - 0.7f), Quaternion.identity).Play();
+            StartCoroutine(UFOShake());
             Destroy(other.gameObject);
         }
     }
@@ -46,7 +49,37 @@ public class UFOBehavior : MonoBehaviour
         while(!GameManager.gameOver)
         {
             yield return new WaitForSeconds(Random.Range(4, 7));
-            Instantiate(ufoFire, transform.position, ufoFire.transform.rotation);
+            Instantiate(ufoFire, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), ufoFire.transform.rotation);
+            StartCoroutine(Recoil());
+        }
+    }
+
+    IEnumerator Recoil()
+    {
+        for (int i = 1; i <= 20; i++)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
+            yield return new WaitForSeconds(0.005f);
+        }
+        for (int i = 1; i <= 20; i++)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
+            yield return new WaitForSeconds(0.005f);
+        }
+    }
+
+    IEnumerator UFOShake()
+    {
+        for (int i = 1; i <= 20; i++)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.02f, transform.position.z);
+            yield return new WaitForSeconds(0.01f);
+            transform.position = new Vector3(transform.position.x + 0.02f, transform.position.y, transform.position.z);
+            yield return new WaitForSeconds(0.01f);
+            transform.position = new Vector3(transform.position.x - 0.02f, transform.position.y, transform.position.z);
+            yield return new WaitForSeconds(0.01f);
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.02f, transform.position.z);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }

@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlanetsSpin : MonoBehaviour
 {
     public GameManager GameManager;
     private int planetHealth;
+    [SerializeField] private ParticleSystem bulletEffect;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
@@ -38,7 +40,24 @@ public class PlanetsSpin : MonoBehaviour
         if (other.gameObject.CompareTag("EnergyRay"))
         {
             planetHealth--;
+            Instantiate(bulletEffect, other.gameObject.transform.position, Quaternion.identity).Play();
+            StartCoroutine(PlanetShake());
             Destroy(other.gameObject);
+        }
+    }
+
+    IEnumerator PlanetShake()
+    {
+        for(int i = 1; i <= 20; i++)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.05f, transform.position.z);
+            yield return new WaitForSeconds(0.01f);
+            transform.position = new Vector3(transform.position.x + 0.05f, transform.position.y, transform.position.z);
+            yield return new WaitForSeconds(0.01f);
+            transform.position = new Vector3(transform.position.x - 0.05f, transform.position.y, transform.position.z);
+            yield return new WaitForSeconds(0.01f);
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.05f, transform.position.z);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }

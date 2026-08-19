@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82e428f1b157191448d20a1195b57cf6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.56455
+      value: 2.41249
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82e428f1b157191448d20a1195b57cf6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.85
+      value: -14.51496
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82e428f1b157191448d20a1195b57cf6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.18
+      value: 4.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82e428f1b157191448d20a1195b57cf6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlanetsSpin
   GameManager: {fileID: 0}
+  bulletEffect: {fileID: 1716745143286727834, guid: e7ad9ac498d98ad45bc6cc39e521b835, type: 3}
 --- !u!135 &-2472374077395801493
 SphereCollider:
   m_ObjectHideFlags: 0

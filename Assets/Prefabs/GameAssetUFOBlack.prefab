@@ -4858,11 +4858,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ffe60c359319e749ac2cdb25d0d054b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.12634
+      value: 2.41249
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ffe60c359319e749ac2cdb25d0d054b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.34744
+      value: -14.51496
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ffe60c359319e749ac2cdb25d0d054b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4991,6 +4991,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UFOBehavior
   ufoFire: {fileID: 5242810720874013106, guid: 618cb728e6dff6f4a9a5bd1f57f63c4f, type: 3}
+  bulletEffect: {fileID: 1716745143286727834, guid: e7ad9ac498d98ad45bc6cc39e521b835, type: 3}
+  GameManager: {fileID: 0}
 --- !u!4 &5641420697329674349 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1ffe60c359319e749ac2cdb25d0d054b, type: 3}
