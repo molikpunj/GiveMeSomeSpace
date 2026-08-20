@@ -24,6 +24,7 @@ public class UFOFireBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameManager.gameOver = true;
+            Instantiate(GameManager.explosion, other.gameObject.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
             Destroy(gameObject);
         }

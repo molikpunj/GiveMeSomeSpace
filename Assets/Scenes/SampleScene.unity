@@ -327,6 +327,7 @@ MonoBehaviour:
   - {fileID: 7973860667874909931, guid: 57e53d75e8de3b7448b448269dfc1b33, type: 3}
   - {fileID: 7662529689103920783, guid: c99371f2cbac55349b80b2ba2a472a99, type: 3}
   - {fileID: 6467721289977266325, guid: 5a8750b9c81b15e418877d331c95ce83, type: 3}
+  explosion: {fileID: 8475037121175306622, guid: 76b44cdcda8382645ba269d50eb1e6ec, type: 3}
   spawnRange: 4
   spawnHeight: -1
   planetSpeed: 2
@@ -334,6 +335,8 @@ MonoBehaviour:
   gameOver: 0
   planetSpawnWave: 1
   ufoSpawnWave: 0
+  aliensKilled: 0
+  wavesDefeated: 0
 --- !u!114 &334832260
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -42,6 +42,8 @@ public class PlayerMovements : MonoBehaviour
         if (other.gameObject.CompareTag("Planet"))
         {
             GameManager.gameOver = true;
+            Instantiate(GameManager.explosion, transform.position, Quaternion.identity);
+            Instantiate(GameManager.explosion, other.gameObject.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
             Destroy(gameObject);
         }

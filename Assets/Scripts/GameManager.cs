@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] planets;
     [SerializeField] private GameObject[] ufos;
+    [SerializeField] public GameObject explosion;
     [SerializeField] private float spawnRange;
     [SerializeField] private float spawnHeight;
     [SerializeField] public float planetSpeed;
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public bool gameOver;
     public bool planetSpawnWave = true;
     public bool ufoSpawnWave;
+    public int aliensKilled;
+    public int wavesDefeated;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,12 +30,13 @@ public class GameManager : MonoBehaviour
             destroyedCount = 0;
             ufoSpawnWave = false;
             planetSpawnWave = true;
+            wavesDefeated++;
             StartCoroutine(spawnPlanet());
         }
     }
     IEnumerator spawnPlanet()
     {
-        while(destroyedCount < 1 && !gameOver && planetSpawnWave)
+        while(destroyedCount < 15 && !gameOver && planetSpawnWave)
         {
             float spawnPoint = Random.Range(-spawnRange, spawnRange);
             Instantiate(planets[Random.Range(0, 5)], new Vector3(spawnPoint, spawnHeight, 0), Quaternion.identity);

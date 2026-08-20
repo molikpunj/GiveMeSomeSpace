@@ -31,6 +31,9 @@ public class PlanetsSpin : MonoBehaviour
         if (planetHealth <= 0)
         {
             GameManager.destroyedCount++;
+            GameManager.aliensKilled += Random.Range(1000, 30000);
+            GameObject explosionEffect = Instantiate(GameManager.explosion, transform.position, Quaternion.identity);
+            explosionEffect.GetComponent<ExplosionEffect>().SetMovement(Vector3.down * GameManager.planetSpeed);
             Destroy(gameObject);
         }
     }

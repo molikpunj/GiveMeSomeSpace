@@ -24,6 +24,7 @@ public class UFOBehavior : MonoBehaviour
     {
         if (health <= 0)
         {
+            Instantiate(GameManager.explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
         if (transform.position.y > sittingPoint)
