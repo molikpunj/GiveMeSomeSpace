@@ -11,7 +11,7 @@ public class EnergyRayBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.up * 10 * Time.deltaTime);
+        transform.Translate(Vector3.up * 15 * Time.deltaTime);
 
         if(transform.position.y > 0 || transform.position.y < -20)
         {

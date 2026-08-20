@@ -30,7 +30,7 @@ public class PlayerMovements : MonoBehaviour
 
         if (playerInput.Player.Shoot.IsPressed() && isFiringAllowed)
         {
-            Instantiate(energyRay, transform.position, Quaternion.identity);
+            Instantiate(energyRay, new Vector3(transform.position.x, transform.position.y - 0.75f, transform.position.z), Quaternion.identity);
             StartCoroutine(ShootingDelay());
             shootingLight.Play();
             StartCoroutine(Recoil());
@@ -68,5 +68,10 @@ public class PlayerMovements : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y + 0.005f, transform.position.z);
             yield return new WaitForSeconds(0.005f);
         }
+    }
+
+    private void OnDisable()
+    {
+        playerInput.Player.Disable();
     }
 }

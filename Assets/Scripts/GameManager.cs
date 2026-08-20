@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float spawnRange;
     [SerializeField] private float spawnHeight;
     [SerializeField] public float planetSpeed;
+    [SerializeField] public TextMeshProUGUI score;
+    [SerializeField] private TextMeshProUGUI waveScore;
     public int destroyedCount;
     public bool gameOver;
     public bool planetSpawnWave = true;
@@ -31,6 +34,7 @@ public class GameManager : MonoBehaviour
             ufoSpawnWave = false;
             planetSpawnWave = true;
             wavesDefeated++;
+            waveScore.text = $"{wavesDefeated}";
             StartCoroutine(spawnPlanet());
         }
     }
