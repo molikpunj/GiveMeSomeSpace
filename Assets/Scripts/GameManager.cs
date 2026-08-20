@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float planetSpeed;
     [SerializeField] public TextMeshProUGUI score;
     [SerializeField] private TextMeshProUGUI waveScore;
+    [SerializeField] private CanvasGroup restartScreen;
+    [SerializeField] private Button restartButton;
     public int destroyedCount;
     public bool gameOver;
     public bool planetSpawnWave = true;
@@ -23,6 +27,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(spawnPlanet());
+        restartButton.onClick.AddListener(RestartGame);
     }
 
     // Update is called once per frame
@@ -37,10 +42,15 @@ public class GameManager : MonoBehaviour
             waveScore.text = $"{wavesDefeated}";
             StartCoroutine(spawnPlanet());
         }
+        if (gameOver && restartScreen.alpha < 1)
+        {
+            restartScreen.gameObject.SetActive(true);
+            restartScreen.alpha += 0.5f * Time.deltaTime;
+        }
     }
     IEnumerator spawnPlanet()
     {
-        while(destroyedCount < 15 && !gameOver && planetSpawnWave)
+        while(destroyedCount < 10 && !gameOver && planetSpawnWave)
         {
             float spawnPoint = Random.Range(-spawnRange, spawnRange);
             Instantiate(planets[Random.Range(0, 5)], new Vector3(spawnPoint, spawnHeight, 0), Quaternion.identity);
@@ -50,6 +60,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => FindObjectsByType<PlanetsSpin>(FindObjectsSortMode.None).Length == 0);
         ufoSpawnWave = true;
         spawnUFO();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void spawnUFO()

@@ -13,7 +13,7 @@ public class UFOBehavior : MonoBehaviour
     void Start()
     {
         GameManager = GameObject.FindAnyObjectByType<GameManager>();
-        sittingPoint = Random.Range(-3, -9);
+        sittingPoint = Random.Range(-4, -9);
         health = Random.Range(20, 31);
         rotationDirection = Random.Range(-50, 50);
         StartCoroutine(shoot());
@@ -50,8 +50,11 @@ public class UFOBehavior : MonoBehaviour
         while(!GameManager.gameOver)
         {
             yield return new WaitForSeconds(Random.Range(4, 7));
-            Instantiate(ufoFire, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), ufoFire.transform.rotation);
-            StartCoroutine(Recoil());
+            if (!GameManager.gameOver)
+            {
+                Instantiate(ufoFire, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), ufoFire.transform.rotation);
+                StartCoroutine(Recoil());
+            }
         }
     }
 
