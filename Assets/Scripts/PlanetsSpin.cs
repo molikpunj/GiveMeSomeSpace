@@ -19,7 +19,7 @@ public class PlanetsSpin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.y < -20 || transform.position.y > 0)
+        if(transform.position.y < -20 || transform.position.y > 5)
         {
             Destroy(gameObject);
         }
@@ -52,16 +52,42 @@ public class PlanetsSpin : MonoBehaviour
 
     IEnumerator PlanetShake()
     {
-        for(int i = 1; i <= 20; i++)
+        float elapsed = 0f;
+        float duration = 0.01f;
+
+        while (elapsed < duration)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 0.05f, transform.position.z);
-            yield return new WaitForSeconds(0.01f);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        float elapsed2 = 0f;
+
+        while (elapsed2 < duration)
+        {
             transform.position = new Vector3(transform.position.x + 0.05f, transform.position.y, transform.position.z);
-            yield return new WaitForSeconds(0.01f);
+
+            elapsed2 += Time.deltaTime;
+            yield return null;
+        }
+        float elapsed3 = 0f;
+
+        while (elapsed3 < duration)
+        {
             transform.position = new Vector3(transform.position.x - 0.05f, transform.position.y, transform.position.z);
-            yield return new WaitForSeconds(0.01f);
+
+            elapsed3 += Time.deltaTime;
+            yield return null;
+        }
+        float elapsed4 = 0f;
+
+        while (elapsed4 < duration)
+        {
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.05f, transform.position.z);
-            yield return new WaitForSeconds(0.01f);
+
+            elapsed4 += Time.deltaTime;
+            yield return null;
         }
     }
 }

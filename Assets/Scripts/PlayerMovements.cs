@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerMovements : MonoBehaviour
 {
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
     [SerializeField] private int moveForce;
     [SerializeField] private int rotateForce;
     [SerializeField] private GameObject energyRay;
@@ -58,15 +58,25 @@ public class PlayerMovements : MonoBehaviour
 
     IEnumerator Recoil()
     {
-        for(int i = 1; i <= 20; i++)
+        float elapsed = 0f;
+        float duration = 0.1f;
+
+        while (elapsed < duration)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.005f, transform.position.z);
-            yield return new WaitForSeconds(0.005f);
+
+            elapsed += Time.deltaTime;
+            yield return null;
         }
-        for (int i = 1; i <= 20; i++)
+        float elapsed2 = 0f;
+        float duration2 = 0.1f;
+
+        while (elapsed2 < duration2)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 0.005f, transform.position.z);
-            yield return new WaitForSeconds(0.005f);
+
+            elapsed2 += Time.deltaTime;
+            yield return null;
         }
     }
 

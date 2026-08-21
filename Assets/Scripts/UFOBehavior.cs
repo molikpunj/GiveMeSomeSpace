@@ -60,30 +60,65 @@ public class UFOBehavior : MonoBehaviour
 
     IEnumerator Recoil()
     {
-        for (int i = 1; i <= 20; i++)
+        float elapsed = 0f;
+        float duration = 0.1f;
+
+        while (elapsed < duration)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
-            yield return new WaitForSeconds(0.005f);
+
+            elapsed += Time.deltaTime;
+            yield return null;
         }
-        for (int i = 1; i <= 20; i++)
+        float elapsed2 = 0f;
+
+        while (elapsed2 < duration)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
-            yield return new WaitForSeconds(0.005f);
+
+            elapsed2 += Time.deltaTime;
+            yield return null;
         }
     }
 
     IEnumerator UFOShake()
     {
-        for (int i = 1; i <= 20; i++)
+        float elapsed = 0f;
+        float duration = 0.01f;
+
+        while (elapsed < duration)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 0.02f, transform.position.z);
-            yield return new WaitForSeconds(0.01f);
-            transform.position = new Vector3(transform.position.x + 0.02f, transform.position.y, transform.position.z);
-            yield return new WaitForSeconds(0.01f);
-            transform.position = new Vector3(transform.position.x - 0.02f, transform.position.y, transform.position.z);
-            yield return new WaitForSeconds(0.01f);
-            transform.position = new Vector3(transform.position.x, transform.position.y - 0.02f, transform.position.z);
-            yield return new WaitForSeconds(0.01f);
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.05f, transform.position.z);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        float elapsed2 = 0f;
+
+        while (elapsed2 < duration)
+        {
+            transform.position = new Vector3(transform.position.x + 0.05f, transform.position.y, transform.position.z);
+
+            elapsed2 += Time.deltaTime;
+            yield return null;
+        }
+        float elapsed3 = 0f;
+
+        while (elapsed3 < duration)
+        {
+            transform.position = new Vector3(transform.position.x - 0.05f, transform.position.y, transform.position.z);
+
+            elapsed3 += Time.deltaTime;
+            yield return null;
+        }
+        float elapsed4 = 0f;
+
+        while (elapsed4 < duration)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.05f, transform.position.z);
+
+            elapsed4 += Time.deltaTime;
+            yield return null;
         }
     }
 }
